@@ -1,4 +1,4 @@
-<?php
+<?php phpinfo();
 /**
  * Created by PhpStorm.
  * User: Мурад
