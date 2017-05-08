@@ -1,5 +1,5 @@
 <?php
-$days = rand(0, 3);
+/* $days = rand(0, 3);
 $task_deadline_ts = strtotime("+" . $days . " day"); // метка времени даты выполнения задачи
 $current_ts = time(); // текущая метка времени
 
@@ -7,8 +7,22 @@ $current_ts = time(); // текущая метка времени
 $date_deadline = date("d.m.y" , $task_deadline_ts);
 
 // в эту переменную запишите кол-во дней до даты задачи
-$days_until_deadline = floor(($task_deadline_ts - time())/86400);
+$days_until_deadline = floor(($task_deadline_ts - time())/86400); */
+
+$type_task = ["Все", "Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
+
+$massive_task = array(
+    array('zadacha' => 'Собеседование в IT компании', 'Date' => '01.06.2107', 'type_task' => 'Работа', 'status' => 'No', 'q' => '0'),
+    array('zadacha' => 'Выполнить тестовое задание', 'Date' => '25.05.2017', 'type_task' => 'Работа', 'status' => 'No', 'q' => '0'),
+    array('zadacha' => 'Сделать задание первого раздела', 'Date' => '21.04.2017', 'type_task' => 'Учеба', 'status' => 'Yes', 'q' => '1'),
+    array('zadacha' => 'встреча с другом', 'Date' => '22.04.2017', 'type_task' => 'Входящие', 'status' => 'No', 'q' => '0'),
+    array('zadacha' => 'Купить корм для кота', 'Date' => 'нет', 'type_task' => 'Домашние дела', 'status' => 'No', 'q' => '0'),
+    array('zadacha' => 'Заказать пиццу', 'Date' => 'нет', 'type_task' => 'Домашние дела', 'status' => 'No', 'q' => '0')
+);
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +44,7 @@ $days_until_deadline = floor(($task_deadline_ts - time())/86400);
             </a>
 
             <div class="main-header__side">
-                <a class="main-header__side-item button button--plus" href="#">Добавить задачу</a>
+                <a class="main-header__side-item button button--plus" href="#">Добавить задачу?!?</a>
 
                 <div class="main-header__side-item user-menu">
                     <div class="user-menu__image">
@@ -52,11 +66,31 @@ $days_until_deadline = floor(($task_deadline_ts - time())/86400);
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">Входящие</a>
-                            <span class="main-navigation__list-item-count">24</span>
-                        </li>
+                        <?php
+                        $index = 0;
+                        $sum = count($type_task);
 
+                        while ($index < $sum) {
+                            $ono = $type_task[$index];
+
+                            if ($index <= 0) {
+                                print ('<li class="main-navigation__list-item main-navigation__list-item--active">
+                            <a class="main-navigation__list-item-link" href="#">' .
+                                    $ono . '</a>
+                            <span class="main-navigation__list-item-count">24</span>
+                        </li>'); } else {
+
+                                print ('<li class="main-navigation__list-item">
+                            <a class="main-navigation__list-item-link" href="#">' .
+                                    $ono . '</a>
+                            <span class="main-navigation__list-item-count">42</span>
+                        </li>');
+                            }
+
+                            $index = $index + 1;
+                        }
+                        ?>
+<!--
                         <li class="main-navigation__list-item main-navigation__list-item--active">
                             <a class="main-navigation__list-item-link" href="#">Учеба</a>
                             <span class="main-navigation__list-item-count">12</span>
@@ -75,7 +109,7 @@ $days_until_deadline = floor(($task_deadline_ts - time())/86400);
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#">Авто</a>
                             <span class="main-navigation__list-item-count">0</span>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
 
@@ -121,19 +155,45 @@ $days_until_deadline = floor(($task_deadline_ts - time())/86400);
                 </div>
 
                 <table class="tasks">
-                    <tr class="tasks__item task task--completed">
+                    <?php
+                    foreach ($massive_task as $key => $val): {
+                    $onoto = $val['zadacha'];
+                    $date_deadline = $val['Date'];
+
+                    if ($val['q'] == '1') {
+
+                    print
+                    ('<tr class="tasks__item task task--completed">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                <span class="checkbox__text">Записаться на интенсив "Базовый PHP"</span>
+                                <span class="checkbox__text">' .  $onoto  . '</span>
                             </label>
                         </td>
-                        <td class="task__date"><?php echo ($date_deadline) ?></td>
+                        <td class="task__date">' . $date_deadline . '</td>
 
 
                         <td class="task__controls">
                         </td>
-                    </tr>
+                    </tr>');
+                    } else
+                    {
+                    print
+                    ('<tr class="tasks__item task">
+                        <td class="task__select">
+                            <label class="checkbox task__checkbox">
+                                <input class="checkbox__input visually-hidden" type="checkbox" checked>
+                                <span class="checkbox__text">' . 333 . '</span>
+                            </label>
+                        </td>
+                        <td class="task__date">' . $date_deadline . '</td>
+
+
+                        <td class="task__controls">
+                        </td>
+                    </tr>'); }
+                    }
+                    endforeach ?>
 
                     <!--добавьте здесь класс "task--important" если эта задача просрочена-->
                     <?php if ($days_until_deadline <= 0): ?>
