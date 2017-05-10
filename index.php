@@ -1,6 +1,5 @@
 <?php
 
-
 $project = ["Все", "Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 
 $massive_task = [
@@ -33,35 +32,31 @@ $massive_task = [
         'Date' => 'нет',
         'project' => 'Домашние дела',
         'status' => 'No'
+    ],
+    ['task' => 'Заказать пиццу',
+    'Date' => 'нет',
+    'project' => 'Домашние дела',
+    'status' => 'No'
     ]
 ];
 
-
 function getNumberTasks($massive_task, $nameCategory)
- {
-     if (!$nameCategory) {
-         return 0;
-     }
-     if ($nameCategory == "Все") {
-         return count($massive_task);
-     }
+{
+    if (!$nameCategory) {
+        return 0;
+    }
+    if ($nameCategory == "Все") {
+        return count($massive_task);
+    }
+    $countTask = 0;
 
-     $countTask = 0;
-
-     foreach ($massive_task as $key => $value) {
-         if ($value["project"] == $nameCategory) {
-             $countTask ++;
-         }
-     }
-     return $countTask;
-
-
-     }
-
-
-
-
-
+    foreach ($massive_task as $key => $value) {
+        if ($value["project"] == $nameCategory) {
+            $countTask++;
+        }
+    }
+    return $countTask;
+}
 
 ?>
 
@@ -174,12 +169,11 @@ function getNumberTasks($massive_task, $nameCategory)
                         $completed = '';
                         $date_deadline = $massive_taskData['Date'];
 
-
                         if ($massive_taskData['status'] == 'Yes') {
                             $completed = "task--completed";
-
                         }
                         ?>
+
                         <tr class="tasks__item task <?= $completed; ?>">
                             <td class="task__select">
                                 <label class="checkbox task__checkbox">
@@ -194,7 +188,6 @@ function getNumberTasks($massive_task, $nameCategory)
                             </td>
                         </tr>
                     <?php endforeach; ?>
-
 
                     <!--добавьте здесь класс "task--important" если эта задача просрочена-->
                     <?php if ($days_until_deadline <= 0): ?>
