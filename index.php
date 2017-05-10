@@ -33,11 +33,7 @@ $massive_task = [
         'project' => 'Домашние дела',
         'status' => 'No'
     ],
-    ['task' => 'Заказать пиццу',
-    'Date' => 'нет',
-    'project' => 'Домашние дела',
-    'status' => 'No'
-    ]
+
 ];
 
 function getNumberTasks($massive_task, $nameCategory)
