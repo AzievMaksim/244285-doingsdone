@@ -35,6 +35,47 @@ $massive_task = [
         'status' => 'No'
     ]
 ];
+/*
+function AmountNumberTask( $array, $string ] )
+{
+    $NumberCurrentTask = 0;
+
+    foreach ($massive_taskList as $num => $massive_taskData):
+    {
+
+        if ('string' == 'Все' )  { $NumberCurrentTask = count($array) ; }
+        else { $NumberCurrentTask равен = $NumberCurrentTask + количество 'string' в этом массиве}
+
+    }
+    endforeach;
+
+    return $NumberCurrentTask;
+}*/
+
+function getNumberTasks($massive_task, $nameCategory)
+ {
+     if (!$nameCategory) {
+         return 0;
+     }
+     if ($nameCategory == "Все") {
+         return count($massive_task);
+     }
+
+     $countTask = 0;
+
+     foreach ($massive_task as $key => $value) {
+         if ($value["project"] == $nameCategory) {
+             $countTask ++;
+         }
+     }
+     return $countTask;
+
+
+     }
+
+
+
+
 
 
 ?>
@@ -93,7 +134,7 @@ $massive_task = [
                             ?>
                             <li class="main-navigation__list-item <?= $firstItem; ?>">
                                 <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
-                                <span class="main-navigation__list-item-count">24</span>
+                                <span class="main-navigation__list-item-count"> <?= getNumberTasks($massive_task, $projectName); ?> </span>
                             </li>
                         <?php endforeach; ?>
 
