@@ -1,6 +1,5 @@
 <?php
 
-
 $project = ["Все", "Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 
 $massive_task = [
@@ -33,9 +32,27 @@ $massive_task = [
         'Date' => 'нет',
         'project' => 'Домашние дела',
         'status' => 'No'
-    ]
+    ],
+
 ];
 
+function getNumberTasks($massive_task, $nameCategory)
+{
+    if (!$nameCategory) {
+        return 0;
+    }
+    if ($nameCategory == "Все") {
+        return count($massive_task);
+    }
+    $countTask = 0;
+
+    foreach ($massive_task as $key => $value) {
+        if ($value["project"] == $nameCategory) {
+            $countTask++;
+        }
+    }
+    return $countTask;
+}
 
 ?>
 
@@ -93,7 +110,7 @@ $massive_task = [
                             ?>
                             <li class="main-navigation__list-item <?= $firstItem; ?>">
                                 <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
-                                <span class="main-navigation__list-item-count">24</span>
+                                <span class="main-navigation__list-item-count"> <?= getNumberTasks($massive_task, $projectName); ?> </span>
                             </li>
                         <?php endforeach; ?>
 
@@ -148,12 +165,11 @@ $massive_task = [
                         $completed = '';
                         $date_deadline = $massive_taskData['Date'];
 
-
                         if ($massive_taskData['status'] == 'Yes') {
                             $completed = "task--completed";
-
                         }
                         ?>
+
                         <tr class="tasks__item task <?= $completed; ?>">
                             <td class="task__select">
                                 <label class="checkbox task__checkbox">
@@ -168,7 +184,6 @@ $massive_task = [
                             </td>
                         </tr>
                     <?php endforeach; ?>
-
 
                     <!--добавьте здесь класс "task--important" если эта задача просрочена-->
                     <?php if ($days_until_deadline <= 0): ?>
