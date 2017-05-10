@@ -35,22 +35,7 @@ $massive_task = [
         'status' => 'No'
     ]
 ];
-/*
-function AmountNumberTask( $array, $string ] )
-{
-    $NumberCurrentTask = 0;
 
-    foreach ($massive_taskList as $num => $massive_taskData):
-    {
-
-        if ('string' == 'Все' )  { $NumberCurrentTask = count($array) ; }
-        else { $NumberCurrentTask равен = $NumberCurrentTask + количество 'string' в этом массиве}
-
-    }
-    endforeach;
-
-    return $NumberCurrentTask;
-}*/
 
 function getNumberTasks($massive_task, $nameCategory)
  {
