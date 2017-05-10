@@ -7,33 +7,33 @@ $massive_task = [
     ['task' => 'Собеседование в IT компании',
         'Date' => '01.06.2107',
         'project' => 'Работа',
-        'status' => 'No',
-        'q' => '0'],
+        'status' => 'No'
+        ],
     ['task' => 'Выполнить тестовое задание',
         'Date' => '25.05.2017',
         'project' => 'Работа',
-        'status' => 'No',
-        'q' => '0'],
+        'status' => 'No'
+        ],
     ['task' => 'Сделать задание первого раздела',
         'Date' => '21.04.2017',
         'project' => 'Учеба',
-        'status' => 'Yes',
-        'q' => '1'],
+        'status' => 'Yes'
+        ],
     ['task' => 'встреча с другом',
         'Date' => '22.04.2017',
         'project' => 'Входящие',
-        'status' => 'No',
-        'q' => '0'],
+        'status' => 'No'
+        ],
     ['task' => 'Купить корм для кота',
         'Date' => 'нет',
         'project' => 'Домашние дела',
-        'status' => 'No',
-        'q' => '0'],
+        'status' => 'No'
+        ],
     ['task' => 'Заказать пиццу',
         'Date' => 'нет',
         'project' => 'Домашние дела',
-        'status' => 'No',
-        'q' => '0']
+        'status' => 'No'
+        ]
 ];
 
 
@@ -83,54 +83,20 @@ $massive_task = [
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
                         <?php
-                        $index = 0;
-                        $sum = count($project);
 
-                        foreach ($massive_task as $key => $val):
-                        {
-                            $ono = $project[$index];
+                        foreach ($project as $num => $projectName):
+                            $firstItem = '';
 
-                            if ($index <= 0)
-                            {
-                                print ('<li class="main-navigation__list-item main-navigation__list-item--active">
-                            <a class="main-navigation__list-item-link" href="#">' .
-                                    $ono . '</a>
-                            <span class="main-navigation__list-item-count">24</span>
-                        </li>');
+                            if ($num == '0') {
+                                $firstItem = "main-navigation__list-item--active";
                             }
-                            else
-                            {
+                            ?>
+                            <li class="main-navigation__list-item <?= $firstItem; ?>">
+                                <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
+                                <span class="main-navigation__list-item-count">24</span>
+                            </li>
+                        <?php endforeach; ?>
 
-                                print ('<li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">' .
-                                    $ono . '</a>
-                            <span class="main-navigation__list-item-count">42</span>
-                        </li>');
-                            }
-
-                         }
-                         endforeach;
-                        ?>
-<!--
-                        <li class="main-navigation__list-item main-navigation__list-item--active">
-                            <a class="main-navigation__list-item-link" href="#">Учеба</a>
-                            <span class="main-navigation__list-item-count">12</span>
-                        </li>
-
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">Здоровье</a>
-                            <span class="main-navigation__list-item-count">3</span>
-                        </li>
-
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">Домашние дела</a>
-                            <span class="main-navigation__list-item-count">7</span>
-                        </li>
-
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#">Авто</a>
-                            <span class="main-navigation__list-item-count">0</span>
-                        </li> -->
                     </ul>
                 </nav>
 
@@ -177,44 +143,33 @@ $massive_task = [
 
                 <table class="tasks">
                     <?php
-                    foreach ($massive_task as $key => $val): {
-                    $onoto = $val['zadacha'];
-                    $date_deadline = $val['Date'];
 
-                    if ($val['q'] == '1') {
-
-                    print
-                    ('<tr class="tasks__item task task--completed">
-                        <td class="task__select">
-                            <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                <span class="checkbox__text">' .  $onoto  . '</span>
-                            </label>
-                        </td>
-                        <td class="task__date">' . $date_deadline . '</td>
+                    foreach ($massive_task as $massive_taskData):
+                        $completed = '';
+                        $date_deadline = $massive_taskData['Date'];
 
 
-                        <td class="task__controls">
-                        </td>
-                    </tr>');
-                    } else
-                    {
-                    print
-                    ('<tr class="tasks__item task">
-                        <td class="task__select">
-                            <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                <span class="checkbox__text">' . 333 . '</span>
-                            </label>
-                        </td>
-                        <td class="task__date">' . $date_deadline . '</td>
+                        if ($massive_taskData['status'] == 'Yes') {
+                            $completed = "task--completed";
+
+                        }
+                        ?>
+                        <tr class="tasks__item task <?= $completed; ?>" >
+                            <td class="task__select">
+                                <label class="checkbox task__checkbox">
+                                    <input class="checkbox__input visually-hidden" type="checkbox" checked>
+                                    <span class="checkbox__text"> <?= $massive_taskData['task']; ?> </span>
+                                </label>
+                            </td>
+                            <td class="task__date"> <?= $date_deadline; ?>  </td>
 
 
-                        <td class="task__controls">
-                        </td>
-                    </tr>'); }
-                    }
-                    endforeach ?>
+                            <td class="task__controls">
+                            </td>
+                        </tr>;
+                    <?php endforeach; ?>
+
+
 
                     <!--добавьте здесь класс "task--important" если эта задача просрочена-->
                     <?php if ($days_until_deadline <= 0): ?>
