@@ -1,24 +1,40 @@
 <?php
-/* $days = rand(0, 3);
-$task_deadline_ts = strtotime("+" . $days . " day"); // метка времени даты выполнения задачи
-$current_ts = time(); // текущая метка времени
 
-// запишите сюда дату выполнения задачи в формате дд.мм.гггг
-$date_deadline = date("d.m.y" , $task_deadline_ts);
 
-// в эту переменную запишите кол-во дней до даты задачи
-$days_until_deadline = floor(($task_deadline_ts - time())/86400); */
+$project = ["Все", "Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 
-$type_task = ["Все", "Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
-
-$massive_task = array(
-    array('zadacha' => 'Собеседование в IT компании', 'Date' => '01.06.2107', 'type_task' => 'Работа', 'status' => 'No', 'q' => '0'),
-    array('zadacha' => 'Выполнить тестовое задание', 'Date' => '25.05.2017', 'type_task' => 'Работа', 'status' => 'No', 'q' => '0'),
-    array('zadacha' => 'Сделать задание первого раздела', 'Date' => '21.04.2017', 'type_task' => 'Учеба', 'status' => 'Yes', 'q' => '1'),
-    array('zadacha' => 'встреча с другом', 'Date' => '22.04.2017', 'type_task' => 'Входящие', 'status' => 'No', 'q' => '0'),
-    array('zadacha' => 'Купить корм для кота', 'Date' => 'нет', 'type_task' => 'Домашние дела', 'status' => 'No', 'q' => '0'),
-    array('zadacha' => 'Заказать пиццу', 'Date' => 'нет', 'type_task' => 'Домашние дела', 'status' => 'No', 'q' => '0')
-);
+$massive_task = [
+    ['task' => 'Собеседование в IT компании',
+        'Date' => '01.06.2107',
+        'project' => 'Работа',
+        'status' => 'No',
+        'q' => '0'],
+    ['task' => 'Выполнить тестовое задание',
+        'Date' => '25.05.2017',
+        'project' => 'Работа',
+        'status' => 'No',
+        'q' => '0'],
+    ['task' => 'Сделать задание первого раздела',
+        'Date' => '21.04.2017',
+        'project' => 'Учеба',
+        'status' => 'Yes',
+        'q' => '1'],
+    ['task' => 'встреча с другом',
+        'Date' => '22.04.2017',
+        'project' => 'Входящие',
+        'status' => 'No',
+        'q' => '0'],
+    ['task' => 'Купить корм для кота',
+        'Date' => 'нет',
+        'project' => 'Домашние дела',
+        'status' => 'No',
+        'q' => '0'],
+    ['task' => 'Заказать пиццу',
+        'Date' => 'нет',
+        'project' => 'Домашние дела',
+        'status' => 'No',
+        'q' => '0']
+];
 
 
 ?>
@@ -44,7 +60,7 @@ $massive_task = array(
             </a>
 
             <div class="main-header__side">
-                <a class="main-header__side-item button button--plus" href="#">Добавить задачу?!?</a>
+                <a class="main-header__side-item button button--plus" href="#">Добавить задачу</a>
 
                 <div class="main-header__side-item user-menu">
                     <div class="user-menu__image">
@@ -68,17 +84,22 @@ $massive_task = array(
                     <ul class="main-navigation__list">
                         <?php
                         $index = 0;
-                        $sum = count($type_task);
+                        $sum = count($project);
 
-                        while ($index < $sum) {
-                            $ono = $type_task[$index];
+                        foreach ($massive_task as $key => $val):
+                        {
+                            $ono = $project[$index];
 
-                            if ($index <= 0) {
+                            if ($index <= 0)
+                            {
                                 print ('<li class="main-navigation__list-item main-navigation__list-item--active">
                             <a class="main-navigation__list-item-link" href="#">' .
                                     $ono . '</a>
                             <span class="main-navigation__list-item-count">24</span>
-                        </li>'); } else {
+                        </li>');
+                            }
+                            else
+                            {
 
                                 print ('<li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#">' .
@@ -87,8 +108,8 @@ $massive_task = array(
                         </li>');
                             }
 
-                            $index = $index + 1;
-                        }
+                         }
+                         endforeach;
                         ?>
 <!--
                         <li class="main-navigation__list-item main-navigation__list-item--active">
