@@ -1,9 +1,7 @@
-
-
 <footer class="main-footer">
     <div class="container">
         <div class="main-footer__copyright">
-            <p>© 2017, «Дела в порядке»</p>
+            <p>©<?= Date('Y'); ?>, «Дела в порядке»</p>
 
             <p>Веб-приложение для удобного ведения списка дел.</p>
         </div>
