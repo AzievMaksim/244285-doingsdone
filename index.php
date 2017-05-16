@@ -29,7 +29,7 @@ $massive_task = [
         'status' => 'No'
     ],
     ['task' => 'Заказать пиццу',
-        'Date' => 'нет',
+        'Date' => '<script> <p>"нет"<p> </script>',
         'project' => 'Домашние дела',
         'status' => 'No'
     ],
@@ -75,7 +75,7 @@ include '../experiment/functions.php';
 <div class="page-wrapper">
     <div class="container container--with-sidebar">
 
-        <?php require '../experiment/templates/header.php' ; ?>
+        <?php require '../delavporadke/templates/header.php' ; ?>
 
         <div class="content">
             <section class="content__side">
@@ -104,16 +104,16 @@ include '../experiment/functions.php';
                 <a class="button button--transparent button--plus content__side-button" href="#">Добавить проект</a>
             </section>
 
-            <?php includePathEndArray('c:/OpenServer/domains/experiment/templates/main.php', $massive_task) ; ?>
+            <?php includePathEndArray('c:/OpenServer/domains/delavporadke/templates/main.php', $massive_task) ; ?>
 
         </div>
     </div>
 </div>
 
 
-<?php require '../experiment/templates/footer.php' ; ?>
+<?php require '../delavporadke/templates/footer.php' ; ?>
 
-<!--
+
 <div class="modal" hidden>
     <button class="modal__close" type="button" name="button">Закрыть</button>
 
@@ -157,7 +157,7 @@ include '../experiment/functions.php';
             <input class="button" type="submit" name="" value="Добавить">
         </div>
     </form>
-</div> -->
+</div>
 
 <script type="text/javascript" src="js/script.js"></script>
 </body>
