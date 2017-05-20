@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 include './array.php';
 
 include './functions.php';
@@ -21,23 +23,17 @@ include './functions.php';
 
 <div class="page-wrapper">
     <div class="container container--with-sidebar">
-
-        <?php require './templates/header.php'; ?>
-
-        <div class="content">
-
-            <?php require './templates/leftBar.php'; ?>
-
+        <?php  require './templates/header.php'; ?>
+                <div class="content">
+                <?php require './templates/leftBar.php'; ?>
             <?php includePathEndArray('./templates/main.php', $task_list); ?>
-
         </div>
     </div>
 </div>
 
 <?php require './templates/footer.php'; ?>
-
 <?php require './templates/beneathFooter.php'; ?>
-
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
+<?php ob_flush(); ?>
