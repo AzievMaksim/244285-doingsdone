@@ -29,6 +29,13 @@ if (isset($_POST['add_task'])) {
         header('Location:index.php');
     }
 }
+/*
+if (isset($_POST['name_task']) and isset($_POST['date'])) {
+  // $new_task_values = array('title' => $_POST['name_task'], 'Date' => $_POST['date'], 'project' => $_POST['project'], 'status' => 'No');   // 'project' => 'Работа', 'status' => 'No'
+   // array_unshift($task_list, 'title' = $_POST['name_task'], 'Date' = $_POST['date'], 'project' = $_POST['project'], 'status' = 'No');
+  array_unshift($project_list, '222', $_POST['name_task'], 'title', $_POST['name_task']) ;
+}
+*/
 
 if (isset($_GET['add'])) {
     $add_class_overlay = 'class="overlay"';
@@ -40,7 +47,7 @@ $save_own_name = $upload_dir_file . $_FILES['preview']['name'];                 
 
 if (isset($_FILES['preview'])) {
     if($_FILES['error'] == 0) {
-                                                                                      // эта функция должна проверять по тмп-имени; для безопасности ( не по родному имени файла )
+        // эта функция должна проверять по тмп-имени; для безопасности ( не по родному имени файла )
         move_uploaded_file($_FILES['preview']['tmp_name'], $save_own_name);          // move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
     }                                                                                 // - http://php.net/manual/ru/function.move-uploaded-file.php
@@ -48,4 +55,5 @@ if (isset($_FILES['preview'])) {
 
 //var_dump($_GET);
 include_once './templates/base.php';
+
 ob_flush(); ?>
