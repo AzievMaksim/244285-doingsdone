@@ -7,7 +7,7 @@
             <p>Веб-приложение для удобного ведения списка дел.</p>
         </div>
 
-        <a class="main-footer__button button button--plus" href="./index.php?add=add">Добавить задачу</a>
+        <a class="main-footer__button button button--plus">Добавить задачу</a>
 
         <div class="main-footer__social social">
             <span class="visually-hidden">Мы в соцсетях:</span>
@@ -54,7 +54,3 @@
     </div>
 </footer>
 <?php ob_flush(); ?>
-
-
-
-

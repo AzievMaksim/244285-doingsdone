@@ -41,10 +41,10 @@
 
         <?php
         $current_project_get = $_GET['projectget'];
-        include './array.php';
-        var_dump($_POST);
-        // если не пустой get и он не совпадает ни с одним из проектов и не совпадает с get_add(форма) - должен возвращаться 404
-        if (!empty($_GET) and !array_key_exists($current_project_get, $project_list) and $_GET !== $_GET['add'])   {
+        include_once './array.php';
+
+        // если не пустой get и он не совпадает ни с одним из проектов и не равен add=добавление задачи -то- должен возвращаться 404
+        if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list)) {
             header('Location: /', true, 404);
             echo '404 это конечно не 42 и все такое!';
 
@@ -57,6 +57,7 @@
                 // include './array.php';
                 // var_dump($task_list);
                 // var_dump($_GET);
+                //var_dump($_POST);
                 if ($current_project_get === 'all' or $current_project_get === $_GET['']) {  // or $_GET[''] == $_GET['0']     or $current_project === $_GET[empty]  ?>
                     <tr class="tasks__item task<?= $completed_class; ?>">
                         <td class="task__select">
@@ -90,6 +91,7 @@
                     </tr>
                     <?php
                 }
+
             }
         } ?>
 
@@ -116,8 +118,3 @@
     </table>
 </main>
 <? ob_flush(); ?>
-
-
-
-
-
