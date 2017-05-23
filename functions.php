@@ -3,7 +3,6 @@
 // в индекс. дает подключение файла main и массива задач, удаление тегов, буферизация, проверка наличия файла
 function includePathEndArray($template_path, $task_list)
 {
-
     ob_start();
 
     foreach ($task_list as $task_list_key => $task ) {
@@ -14,9 +13,6 @@ function includePathEndArray($template_path, $task_list)
 
     if (is_file($template_path)) {
         include $template_path;
-    } else {
-        return 'print(<p>нет такого имени</p>);' ;
-        // почему не выводит на экран эту строку?
     }
     return ob_get_flush();
 }
@@ -28,12 +24,14 @@ function amountTaskInProject($task_list, $nameCategory)
         return 0;
     }
     if ($nameCategory == 'Все') {
+
         return count($task_list);
     }
     $countTask = 0;
 
     foreach ($task_list as $key => $value) {
         if ($value['project'] == $nameCategory) {
+
             $countTask++;
         }
     }

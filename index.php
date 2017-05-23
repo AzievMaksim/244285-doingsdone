@@ -1,11 +1,7 @@
 <?php
 
 ob_start();
-
 include './array.php';
-
-include './functions.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +16,6 @@ include './functions.php';
 <body><!--class="overlay"-->
 
 <h1 class="visually-hidden">Дела в порядке</h1>
-
 <div class="page-wrapper">
     <div class="container container--with-sidebar">
         <?php  require './templates/header.php'; ?>
@@ -32,7 +27,6 @@ include './functions.php';
 </div>
 
 <?php require './templates/footer.php'; ?>
-<?php require './templates/beneathFooter.php'; ?>
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

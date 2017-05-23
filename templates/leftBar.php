@@ -5,15 +5,11 @@
     <nav class="main-navigation">
         <ul class="main-navigation__list">
             <?php
-
             foreach ($project_list as $alias => $project_Name):
                 $css_class_active = '';
                 $index = 0;
                 $url = "index.php?projectget=$alias";
 
-                /*if ($index == 0) {
-                    $css_class_active = " main-navigation__list-item--active";
-                } */
                 ?>
                 <li class="main-navigation__list-item<?= $css_class_active; ?>">
                     <a class="main-navigation__list-item-link" href="/<?= $url; ?>"> <?= $project_Name; ?></a>
@@ -23,7 +19,6 @@
 
         </ul>
     </nav>
-
     <a class="button button--transparent button--plus content__side-button" href="#">Добавить проект</a>
 </section>
 <?php ob_flush(); ?>
