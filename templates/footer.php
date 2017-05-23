@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <footer class="main-footer">
     <div class="container">
         <div class="main-footer__copyright">
@@ -52,8 +53,4 @@
         </div>
     </div>
 </footer>
-
-
-
-
-
+<?php ob_flush(); ?>

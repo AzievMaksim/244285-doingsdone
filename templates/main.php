@@ -1,3 +1,4 @@
+<? ob_start(); ?>
 <main class="content__main">
     <h2 class="content__main-heading">Список задач</h2>
 
@@ -39,35 +40,61 @@
     <table class="tasks">
 
         <?php
-        // вариант без эндфореач со скобками дал ошибку. почему? выяснить.
-        foreach ($task_list as $task):
-            $completed_class = '';
-            $comleted_atrib_checked = '';
+        $current_project_get = $_GET['projectget'];
+        include './array.php';
 
-            if ($task['status'] == 'Yes') {
-                $completed_class = ' task--completed';
-                // в нижнем варианте не сработало. почему?
-                /* $completed_atrib_checked = ' checked'; */
+        // если не пустой get и он не совпадает ни с один из проектов - должен возвращаться 404
+        if (!empty($_GET) and !array_key_exists($current_project_get, $project_list))   {
+            header('Location: /', true, 404);
+            echo '404 это конечно не 42 и все такое!';
+
+        }
+        else {
+
+            foreach ($task_list as $index_task => $task) {
+                $completed_class = '';
+                $comleted_atrib_checked = '';
+                // include './array.php';
+                // var_dump($task_list);
+
+                // var_dump($_GET);
+
+                if ($current_project_get === 'all' or $current_project_get === $_GET['']) {  // or $_GET[''] == $_GET['0']     or $current_project === $_GET[empty]  ?>
+                    <tr class="tasks__item task<?= $completed_class; ?>">
+                        <td class="task__select">
+                            <label class="checkbox task__checkbox">
+                                <input class="checkbox__input visually-hidden"
+                                       type="checkbox" <?php if ($task['status'] == 'Yes') { ?> checked<?php } ?> >
+                                <span class="checkbox__text"><?= $task['title']; ?></span>
+                            </label>
+                        </td>
+                        <td class="task__date"><?= $task['Date']; ?></td>
+
+                        <td class="task__controls">
+                        </td>
+                    </tr>
+                    <?php
+                }
+
+                if ($task['project'] == $project_list[$current_project_get]) { /*   */ ?>
+                    <tr class="tasks__item task<?= $completed_class; ?>">
+                        <td class="task__select">
+                            <label class="checkbox task__checkbox">
+                                <input class="checkbox__input visually-hidden"
+                                       type="checkbox" <?php if ($task['status'] == 'Yes') { ?> checked<?php } ?> >
+                                <span class="checkbox__text"><?= $task['title']; ?></span>
+                            </label>
+                        </td>
+                        <td class="task__date"><?= $task['Date']; ?></td>
+
+                        <td class="task__controls">
+                        </td>
+                    </tr>
+                    <?php
+                }
+
             }
-            ?>
-
-            <tr class="tasks__item task<?= $completed_class; ?>">
-                <td class="task__select">
-                    <label class="checkbox task__checkbox">
-                        <input class="checkbox__input visually-hidden"
-                               type="checkbox" <?php if ($task['status'] == 'Yes') { ?> checked<?php } ?> >
-                        <span class="checkbox__text"><?= $task['title']; ?></span>
-                    </label>
-                </td>
-                <td class="task__date"><?= $task['Date']; ?></td>
-
-
-                <td class="task__controls">
-                </td>
-            </tr>
-            <?php
-        endforeach ?>
-
+        } ?>
 
         <tr>
             <td class="task__controls">
@@ -91,7 +118,8 @@
 
     </table>
 </main>
-    
+<? ob_flush(); ?>
+
 
 
 
