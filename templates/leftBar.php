@@ -11,9 +11,6 @@
                 $index = 0;
                 $url = "index.php?projectget=$alias";
 
-                /*if ($index == 0) {
-                    $css_class_active = " main-navigation__list-item--active";
-                } */
                 ?>
                 <li class="main-navigation__list-item<?= $css_class_active; ?>">
                     <a class="main-navigation__list-item-link" href="/<?= $url; ?>"> <?= $project_Name; ?></a>

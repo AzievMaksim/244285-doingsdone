@@ -13,8 +13,11 @@ function includePathEndArray($template_path, $task_list) {
         return ob_get_flush();
     }
 }
+
 //количество задач в текущем проекте
-function amountTaskInProject($task_list, $nameCategory) {
+function amountTaskInProject($task_list, $nameCategory)
+{
+
     if (!$nameCategory) {
         return 0;
     }
@@ -30,3 +33,4 @@ function amountTaskInProject($task_list, $nameCategory) {
     }
     return $countTask;
 }
+

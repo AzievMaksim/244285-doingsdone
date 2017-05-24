@@ -57,3 +57,4 @@ if (isset($_FILES['preview'])) {
 include_once './templates/base.php';
 
 ob_flush(); ?>
+
