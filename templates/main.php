@@ -44,6 +44,7 @@
         include_once './array.php';
 
         // если не пустой get и он не совпадает ни с одним из проектов и не равен add=добавление задачи -то- должен возвращаться 404
+        // если гет Не пустой - то это Несоответствие любому идентификатору - и тогда вернется 404 - ошибку дает без этого
         if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list)) {
 
             header('Location: /', true, 404);
@@ -54,11 +55,10 @@
 
             foreach ($task_list as $index_task => $task) {
                 $completed_class = '';
-                $comleted_atrib_checked = '';
-                // include './array.php';
+                 // include './array.php';
                 // var_dump($task_list);
                 // var_dump($_GET);
-                //var_dump($_POST);
+                // var_dump($_POST);
 
                 if ($current_project_get === 'all' or $current_project_get === $_GET['']) {  // or $_GET[''] == $_GET['0']     or $current_project === $_GET[empty]  ?>
                     <tr class="tasks__item task<?= $completed_class; ?>">

@@ -40,7 +40,7 @@
                 <label class="button button--transparent" for="preview">
                     <span>Выберите файл</span>
                 </label>
-                <span><br><?= $if_file_was_selected; ?></span>
+                <span><br></span>
             </div>
         </div>
         <!-- добавление нового таска происходит если таск заполнен верно -->
