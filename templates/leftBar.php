@@ -5,6 +5,7 @@
     <nav class="main-navigation">
         <ul class="main-navigation__list">
             <?php
+
             foreach ($project_list as $alias => $project_Name):
                 $css_class_active = '';
                 $index = 0;

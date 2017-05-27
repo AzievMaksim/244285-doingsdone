@@ -1,6 +1,5 @@
 <?php
 
-
 $project_list = [
     'all' => 'Все',
     'incoming' => 'Входящие',
@@ -43,13 +42,13 @@ $task_list = [
     ],
     [
         'title' => 'Заказать пиццу',
-        'Date' => '<script> <p>нет</p> </script>',
+        'Date' => '<p>нет</p>',
         'project' => 'Домашние дела',
         'status' => 'No'
     ],
     [
         'title' => 'Заказать пиццу-2',
-        'Date' => '<script> <p>нет</p> </script>',
+        'Date' => '<p>нет</p>',
         'project' => 'Домашние дела',
         'status' => 'No'
     ],

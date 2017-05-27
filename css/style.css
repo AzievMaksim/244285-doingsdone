@@ -69,6 +69,10 @@ a:focus {
   
 }
 
+.a-color {
+  color: black;
+}
+
 .body-background {
   background: #ffffff url("../img/background.jpg") no-repeat 0 0;
   background-size: cover;
