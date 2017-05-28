@@ -42,23 +42,36 @@
         <?php
         $current_project_get = $_GET['projectget'];
         include_once './array.php';
+        $post_value = $_POST['name_task'];
 
         // если не пустой get и он не совпадает ни с одним из проектов и не равен add=добавление задачи -то- должен возвращаться 404
         // если гет Не пустой - то это Несоответствие любому идентификатору - и тогда вернется 404 - ошибку дает без этого
-        if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list)) {
+        if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list)) { // 
 
-            header('Location: /', true, 404);
-            echo '404 это конечно не 42 и все такое!';
+            header('Location: /', true, 404);                 
+            echo '404 это конечно не 42 и все такое!'; 
 
-        }
-        else {
+        } else {
+            
+            if (!empty($post_value)) {
+            
+                $new_task_post = $_POST['name_task'];    
+                $date_form_post = $_POST['date_form'];
+                $project_post = $_POST['project'];
+                $status_post = 'No';    
 
+                $new_array_from_post = [
+                    'title' => $new_task_post,
+                    'Date' => $date_form_post,
+                    'project' => $project_post,
+                    'status' => $status_post
+                ];
+                
+                array_unshift($task_list, $new_array_from_post); 
+            }
+           
             foreach ($task_list as $index_task => $task) {
                 $completed_class = '';
-                 // include './array.php';
-                // var_dump($task_list);
-                // var_dump($_GET);
-                // var_dump($_POST);
 
                 if ($current_project_get === 'all' or $current_project_get === $_GET['']) {  // or $_GET[''] == $_GET['0']     or $current_project === $_GET[empty]  ?>
                     <tr class="tasks__item task<?= $completed_class; ?>">
@@ -77,7 +90,7 @@
                     <?php
                 }
 
-                if ($task['project'] == $project_list[$current_project_get]) { /*   */ ?>
+                if ($task['project'] == $project_list[$current_project_get]) { ?>
                     <tr class="tasks__item task<?= $completed_class; ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
@@ -95,7 +108,9 @@
                 }
 
             }
-        } ?>
+        } 
+        var_dump($_POST);
+        ?>
 
         <tr>
             <td class="task__controls">

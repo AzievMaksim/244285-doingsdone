@@ -4,7 +4,7 @@
 
     <h2 class="modal__heading">Добавление задачи</h2>
 
-    <form class="form" action="index.php?add=add" method="post" enctype="multipart/form-data" name="new_task" >
+    <form class="form" action="index.php" method="post" enctype="multipart/form-data" name="new_task" >
 
         <!-- название нового таска  -->
         <div class="form__row">
@@ -18,8 +18,8 @@
             <label class="form__label" for="project">Проект <sup>*</sup></label>
 
             <select class="form__input form__input--select" name="project" id="project">
-                <option value="">Входящие</option>
-                <option value="">Учеба</option>
+                <option value="Входящие">Входящие</option>
+                <option value="Учеба">Учеба</option>
             </select>
         </div>
 
@@ -27,7 +27,7 @@
         <div class="form__row">
             <label class="form__label" for="date">Дата выполнения <sup>*</sup></label>
             <span class="form__error"><?= $span_error_text_date; ?></span>
-            <input class="form__input form__input--date<?= $form_input_date_error; ?>" type="text" name="date" id="date" value="<?php echo $_POST['date']; ?>" placeholder="Введите дату в формате ДД.ММ.ГГГГ">
+            <input class="form__input form__input--date<?= $form_input_date_error; ?>" type="text" name="date_form" id="date" value="<?php echo $_POST['date_form']; ?>" placeholder="Введите дату в формате ДД.ММ.ГГГГ">
         </div>
 
         <!-- файл - прикрепление -->
@@ -43,7 +43,7 @@
                 <span><br></span>
             </div>
         </div>
-        <!-- добавление нового таска происходит если таск заполнен верно -->
+        <!-- добавление нового таска происходит, если таск заполнен верно -->
         <div class="form__row form__row--controls">
             <input class="button" type="submit" name="add_task" value="Добавить">
         </div>

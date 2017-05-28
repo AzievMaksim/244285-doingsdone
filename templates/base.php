@@ -15,7 +15,7 @@
     <div class="container container--with-sidebar">
         <?php  require_once './templates/header.php'; ?>
                 <div class="content">
-                <?php require './templates/leftBar.php'; ?>
+                <?php require_once './templates/leftBar.php'; ?>
             <?php includePathEndArray('./templates/main.php', $task_list); ?>
         </div>
     </div>
