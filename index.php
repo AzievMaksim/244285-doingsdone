@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ob_start();
 
 include_once './array.php';
@@ -25,7 +25,7 @@ if (isset($_POST['add_task'])) {
 
     if  (($_POST['name_task'] == '') or ($_POST['date_form']  == '')) {
         $add_class_overlay = 'class="overlay"';
-        include_once './forms/add_new_task.php' ;
+        include_once './forms/add_new_task.php';
     }
 
 }
@@ -45,7 +45,11 @@ if (isset($_GET['add'])) {
     include_once './forms/add_new_task.php';
 }
 
+if (isset($_GET['log'])) {
+    $add_class_overlay = 'class="overlay"';
+    include_once './forms/enter_form.php';
+}
+
 include_once './templates/base.php';
 
 ob_flush(); ?>
-

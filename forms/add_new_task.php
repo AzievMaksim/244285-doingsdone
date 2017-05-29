@@ -27,7 +27,7 @@
         <div class="form__row">
             <label class="form__label" for="date">Дата выполнения <sup>*</sup></label>
             <span class="form__error"><?= $span_error_text_date; ?></span>
-            <input class="form__input form__input--date<?= $form_input_date_error; ?>" type="text" name="date_form" id="date" value="<?php echo $_POST['date_form']; ?>" placeholder="Введите дату в формате ДД.ММ.ГГГГ">
+            <input class="form__input form__input--date<?= $form_input_date_error; ?>" type="text" name="date_form" id="date" value="<?php echo $_POST['date_form']; ?>"  placeholder="Введите дату в формате ДД.ММ.ГГГГ">
         </div>
 
         <!-- файл - прикрепление -->
