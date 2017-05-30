@@ -41,7 +41,7 @@
 
 <?php
 $current_project_get = $_GET['projectget'];
-include_once './array.php';
+include './array.php';
 $post_value = $_POST['name_task'];
 
 // если не пустой get и он не совпадает ни с одним из проектов и не равен add=добавление задачи -то- должен возвращаться 404
