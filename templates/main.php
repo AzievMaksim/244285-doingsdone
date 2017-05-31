@@ -44,9 +44,19 @@ $current_project_get = $_GET['projectget'];
 include './array.php';
 $post_value = $_POST['name_task'];
 
+if(isset($_GET['show_completed=0'])) {
+    $hidden_task_completed = '';
+    foreach($task_list as $key => $value) {
+        if($value['status'] == false) {
+           $hidden_task_completed = 'hidden';
+        }
+    }   header('Location:index.php');
+}   
+    
+    
 // если не пустой get и он не совпадает ни с одним из проектов и не равен add=добавление задачи -то- должен возвращаться 404
 // если гет Не пустой - то это Несоответствие любому идентификатору - и тогда вернется 404 - ошибку дает без этого
-if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list)) { // 
+if ((!$_GET['add']) and !empty($_GET) and !array_key_exists($current_project_get, $project_list) and !$_GET['show_completed'] and !$_GET['show_completed=0']) { // 
 
 header('Location: /', true, 404);                 
 echo '404 это конечно не 42 и все такое!'; 
