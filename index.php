@@ -5,6 +5,20 @@ ob_start();
 include_once './array.php';
 include_once './functions.php';
 
+//*COMPLETED TASKS
+/*
+if(isset($_GET['show_completed=0'])) {
+    $hidden_task_completed = '';
+    foreach($task_list as $key => $value) {
+        if($value['status'] == false) {
+           $hidden_task_completed = 'hidden';
+        }
+    }   header('Location:index.php');
+}   
+  */ 
+//****************************
+
+
 $add_class_overlay = '';
 $form_input_name_error = '';
 $span_error_text_name = '';

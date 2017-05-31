@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `task_list` (
   `data_create` datetime NOT NULL,
   `data_dedline` datetime NOT NULL,
   `data_completed` datetime NOT NULL,
-  `status_task` char(12) NOT NULL,
-  `image_link` char(12) NOT NULL,
+  `status_task` int(1) NOT NULL,
+  `image_link` char(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
